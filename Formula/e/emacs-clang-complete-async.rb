@@ -44,9 +44,15 @@ class EmacsClangCompleteAsync < Formula
     resolves "https://github.com/Golevka/emacs-clang-complete-async/pull/59"
   end
 
+  deny_network_access!
+
   def install
     system "make"
     bin.install "clang-complete"
     share.install "auto-complete-clang-async.el"
+  end
+
+  test do
+    false
   end
 end
