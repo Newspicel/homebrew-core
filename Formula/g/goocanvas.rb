@@ -44,11 +44,17 @@ class Goocanvas < Formula
     file "Patches/libtool/configure-big_sur.diff"
   end
 
+  deny_network_access!
+
   def install
     system "./configure", "--disable-gtk-doc-html",
                           "--disable-silent-rules",
                           "--enable-introspection=yes",
                           *std_configure_args
     system "make", "install"
+  end
+
+  test do
+    false
   end
 end
