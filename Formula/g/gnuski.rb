@@ -23,10 +23,16 @@ class Gnuski < Formula
 
   uses_from_macos "ncurses"
 
+  deny_network_access!
+
   def install
     # https://sourceforge.net/p/gnuski/patches/2/
     inreplace "objects.h", "#endif", "void setupColors ();\n#endif"
     system "make"
     bin.install "gnuski"
+  end
+
+  test do
+    false
   end
 end
