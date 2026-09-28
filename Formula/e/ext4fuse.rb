@@ -20,8 +20,14 @@ class Ext4fuse < Formula
   depends_on "libfuse@2"
   depends_on :linux # on macOS, requires closed-source macFUSE
 
+  deny_network_access!
+
   def install
     system "make"
     bin.install "ext4fuse"
+  end
+
+  test do
+    false
   end
 end
