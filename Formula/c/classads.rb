@@ -42,16 +42,20 @@ class Classads < Formula
     system "./configure", *args, *std_configure_args
     system "make", "install"
   end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/classad_version")
+  end
 end
 
 __END__
 diff -pur classads-1.0.10/util.cpp classads-1.0.10-new/util.cpp
 --- classads-1.0.10/util.cpp	2011-04-09 01:36:36
 +++ classads-1.0.10-new/util.cpp	2022-11-10 11:16:47
-@@ -430,7 +430,7 @@ int classad_isinf(double x) 
+@@ -430,7 +430,7 @@ int classad_isinf(double x)
  #endif
- int classad_isinf(double x) 
- { 
+ int classad_isinf(double x)
+ {
 -    if (finite(x) || x != x) {
 +    if (isfinite(x) || x != x) {
          return 0;
