@@ -39,12 +39,16 @@ class Freealut < Formula
     depends_on "openal-soft"
   end
 
+  deny_network_access!
+
   def install
     system "./autogen.sh"
-    system "./configure", "--disable-debug", "--disable-dependency-tracking",
-                          "--prefix=#{prefix}",
-                          "--mandir=#{man}"
+    system "./configure", "--mandir=#{man}", *std_configure_args
     system "make", "install"
+  end
+
+  test do
+    false
   end
 end
 
