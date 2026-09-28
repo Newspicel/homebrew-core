@@ -46,6 +46,8 @@ class Fragroute < Formula
     file "Patches/fragroute/pcaputil.c.patch"
   end
 
+  deny_network_access!
+
   def install
     # Workaround for newer Clang
     ENV.append_to_cflags "-Wno-implicit-int" if DevelopmentTools.clang_build_version >= 1403
@@ -73,7 +75,11 @@ class Fragroute < Formula
       "--with-libpcap=#{formula_opt_prefix("libpcap")}"
     end
 
-    system "./configure", *args
+    system "./configure", *args, *std_configure_args
     system "make", "install"
+  end
+
+  test do
+    false
   end
 end
