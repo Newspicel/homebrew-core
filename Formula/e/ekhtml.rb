@@ -25,6 +25,8 @@ class Ekhtml < Formula
   depends_on "automake" => :build
   depends_on "libtool" => :build
 
+  deny_network_access!
+
   def install
     ENV.deparallelize
     # Run autoreconf on macOS to rebuild configure script so that it doesn't try
@@ -32,5 +34,9 @@ class Ekhtml < Formula
     system "autoreconf", "--force", "--verbose", "--install"
     system "./configure", *std_configure_args
     system "make", "install"
+  end
+
+  test do
+    false
   end
 end
