@@ -38,6 +38,11 @@ class Bsdsfv < Formula
     system "make", "all"
     system "make", "install"
   end
+
+  test do
+    touch "test.sfv"
+    system bin/"bsdsfv", "-m", "test.sfv"
+  end
 end
 
 __END__
