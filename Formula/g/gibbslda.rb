@@ -28,11 +28,17 @@ class Gibbslda < Formula
   # https://sourceforge.net/p/gibbslda/bugs/5/
   patch :DATA
 
+  deny_network_access!
+
   def install
     system "make", "clean"
     system "make", "all"
     bin.install "src/lda"
     share.install "docs/GibbsLDA++Manual.pdf"
+  end
+
+  test do
+    false
   end
 end
 
