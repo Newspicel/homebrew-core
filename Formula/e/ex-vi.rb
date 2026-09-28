@@ -30,6 +30,8 @@ class ExVi < Formula
   conflicts_with "macvim", because: "both install `vi` and `view` binaries"
   conflicts_with "vim", "vim-classic", because: "both install `ex` and `view` binaries"
 
+  deny_network_access!
+
   def install
     # Fix compile with newer Clang
     ENV.append_to_cflags "-Wno-implicit-function-declaration" if DevelopmentTools.clang_build_version >= 1403
@@ -38,5 +40,9 @@ class ExVi < Formula
                               "PREFIX=#{prefix}",
                               "PRESERVEDIR=/var/tmp/vi.recover",
                               "TERMLIB=ncurses"
+  end
+
+  test do
+    false
   end
 end
