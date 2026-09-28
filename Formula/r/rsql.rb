@@ -1,8 +1,8 @@
 class Rsql < Formula
   desc "CLI for relational databases and common data file formats"
   homepage "https://theseus-rs.github.io/rsql/rsql_cli/"
-  url "https://github.com/theseus-rs/rsql/archive/refs/tags/v0.20.0.tar.gz"
-  sha256 "6b68d37931b47595aabb4d920be64dbd2042afa98b77d071f5db3930087da645"
+  url "https://github.com/theseus-rs/rsql/archive/refs/tags/v0.21.0.tar.gz"
+  sha256 "d5e89676f8c172f7e3782232fade71eaeaa3a4f8b823be764b04236579751582"
   license any_of: ["Apache-2.0", "MIT"]
   head "https://github.com/theseus-rs/rsql.git", branch: "main"
 
@@ -20,6 +20,12 @@ class Rsql < Formula
 
   on_linux do
     depends_on "openssl@4"
+  end
+
+  deny_network_access!
+
+  def fetch
+    system "cargo", "fetch", *std_cargo_fetch_args
   end
 
   def install
