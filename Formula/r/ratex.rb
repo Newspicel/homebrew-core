@@ -1,8 +1,8 @@
 class Ratex < Formula
   desc "Fast TeX engine written in Rust"
   homepage "https://github.com/leoliu0/ratex"
-  url "https://github.com/leoliu0/ratex/archive/refs/tags/v0.4.4.tar.gz"
-  sha256 "03f60467885ab3bc047044edc16511fd5cf5735fc4ed26be5c662def4954ebfd"
+  url "https://github.com/leoliu0/ratex/archive/refs/tags/v0.4.5.tar.gz"
+  sha256 "1edd8dd7b9a40a4a1473b1fa631ad50e88ebceec53d2022ec1ec61dd03f13191"
   license any_of: ["MIT", "Apache-2.0"]
   head "https://github.com/leoliu0/ratex.git", branch: "main"
 
@@ -25,6 +25,14 @@ class Ratex < Formula
   end
 
   def install
+    # TODO: Remove these settings when upstream reduces embedded-archive build memory.
+    # https://github.com/leoliu0/ratex/issues/16
+    if OS.linux?
+      ENV.deparallelize
+      ENV["CARGO_PROFILE_RELEASE_LTO"] = "false"
+      ENV["CARGO_PROFILE_RELEASE_CODEGEN_UNITS"] = "1"
+    end
+
     # Every bin embeds the package archive, so linking them all OOMs; `ratex` dispatches aliases by name.
     system "cargo", "install", "--bin", "ratex", *std_cargo_args(path: "crates/tex-cli")
     %w[latexdiff lualatex pdflatex tex-bibtex texmk xelatex].each { |cmd| bin.install_symlink "ratex" => cmd }
