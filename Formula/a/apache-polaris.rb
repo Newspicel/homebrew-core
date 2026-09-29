@@ -47,6 +47,7 @@ class ApachePolaris < Formula
   end
 
   test do
+    mkdir "logs"
     port = free_port
     ENV["QUARKUS_HTTP_PORT"] = free_port.to_s
     ENV["QUARKUS_MANAGEMENT_PORT"] = port.to_s
