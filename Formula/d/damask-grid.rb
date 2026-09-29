@@ -4,6 +4,7 @@ class DamaskGrid < Formula
   url "https://damask-multiphysics.org/download/damask-3.1.0.tar.xz"
   sha256 "d1ba65a167aab221c13f003507aba17f663c53af94fc1cd4a47408008329def1"
   license "AGPL-3.0-only"
+  revision 1
 
   # The first-party website doesn't always reflect the newest version, so we
   # check GitHub releases for now.
