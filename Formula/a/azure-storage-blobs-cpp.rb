@@ -1,10 +1,9 @@
 class AzureStorageBlobsCpp < Formula
   desc "Microsoft Azure Storage Blobs SDK for C++"
   homepage "https://github.com/Azure/azure-sdk-for-cpp/tree/main/sdk/storage/azure-storage-blobs"
-  url "https://github.com/Azure/azure-sdk-for-cpp/archive/refs/tags/azure-storage-blobs_12.18.0.tar.gz"
-  sha256 "0f266f91cf00b79bb6c7c6f99e44942b43a7141db565556a4298f6ebe3a86fcc"
+  url "https://github.com/Azure/azure-sdk-for-cpp/archive/refs/tags/azure-storage-blobs_12.19.0.tar.gz"
+  sha256 "346cf098f055b90b88b380ac08c3e31bfca1578e1186b85ba85be7b436c0ad63"
   license "MIT"
-  revision 2
 
   livecheck do
     url :stable
@@ -24,6 +23,7 @@ class AzureStorageBlobsCpp < Formula
   depends_on "cmake" => :build
   depends_on "azure-core-cpp"
   depends_on "azure-storage-common-cpp"
+  depends_on "nanoarrow"
 
   def install
     ENV["AZURE_SDK_DISABLE_AUTO_VCPKG"] = "1"
