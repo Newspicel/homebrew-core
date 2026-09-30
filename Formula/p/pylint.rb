@@ -3,12 +3,16 @@ class Pylint < Formula
 
   desc "It's not just a linter that annoys you!"
   homepage "https://pylint.readthedocs.io/en/latest/"
-  url "https://files.pythonhosted.org/packages/e0/5e/d5ec2c861010cf8577a3e5baaf2405fdf1004f1657d9245c4efb006c1dfd/pylint-4.0.9.tar.gz"
-  sha256 "6f1305780229ae720e89b8aff2b3ff857cbb268fbab98c8b586960267667ad34"
+  url "https://files.pythonhosted.org/packages/81/d2/e548818e920ec543e58cc2082fea50a1a9485b3137e69ea27d647aede3f8/pylint-4.0.10.tar.gz"
+  sha256 "bf19280b10f2185bfbc898a28ac0b85c958af2e6d684a94984e12d3ac975d9f4"
   license "GPL-2.0-or-later"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "662402bfb0903063a14de87638e3d265d11a96b3686dd19ce8a449fd06bbf544"
+    sha256 cellar: :any_skip_relocation, arm64_golden_gate: "a0c5eb55907368adac54b21b00aaa4751157ff307a67b7f472ede6111196091d"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:       "a0c5eb55907368adac54b21b00aaa4751157ff307a67b7f472ede6111196091d"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia:     "a0c5eb55907368adac54b21b00aaa4751157ff307a67b7f472ede6111196091d"
+    sha256 cellar: :any_skip_relocation, arm64_linux:       "64d94c02d1224d6da684114cf0b1fe006e15f4f1a7181b621238f783688d376b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:      "64d94c02d1224d6da684114cf0b1fe006e15f4f1a7181b621238f783688d376b"
   end
 
   depends_on "rust" => :build # for `isort`
@@ -25,8 +29,8 @@ class Pylint < Formula
   end
 
   resource "isort" do
-    url "https://files.pythonhosted.org/packages/e6/43/067e17bfa10b6486b408d5294105ac894149a9abb94b338568b1f53a73c9/isort-9.0.1.tar.gz"
-    sha256 "ba23db109e3e93ef1999f7209a651214994cd807801addd16ac485982eb4edd7"
+    url "https://files.pythonhosted.org/packages/da/cf/068066b8fdab91cd40bcd63e483137908710a3d25a4d3a01b538be45d9d6/isort-9.0.2.tar.gz"
+    sha256 "d2298980ce44350f11d9d24c8150eaef1883431ec203dddbb4e9b5c3ceb54c70"
   end
 
   resource "mccabe" do
@@ -40,8 +44,8 @@ class Pylint < Formula
   end
 
   resource "platformdirs" do
-    url "https://files.pythonhosted.org/packages/ea/dd/65804b0c2925a1c821a05502ea57517b69a073ff400d25ab9faa3a2cf012/platformdirs-4.11.12.tar.gz"
-    sha256 "e8dc1cb58f1153fd7f61db1374317770baababec2480b37b8f01c6cc25b45267"
+    url "https://files.pythonhosted.org/packages/c3/8a/84ef03c1c83eacd7cc4540b05428a93b5cd4e42f62fb0b98ac2cb6ed3a6d/platformdirs-4.12.1.tar.gz"
+    sha256 "38da801a4af303033cbffccb39030db22bf0473e6414309b02acebeee7ca8bf1"
   end
 
   resource "tomlkit" do
